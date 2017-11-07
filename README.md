@@ -1,7 +1,7 @@
 # PickingImages
 
 
-![Scheme](/screenshots/SimulatorScreenShot-iPhone8Plus-2017-10-29at21.33.44x.png)
+![Scheme](/screenshots/SimulatorScreenShot-iPhone8Plus-2017-11-07at16.50.01.png)
 
 
 PickingImages is an iOS sample application that lets the user select an image.
