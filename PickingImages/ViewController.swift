@@ -42,7 +42,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         
         let chosenImage = info[UIImagePickerControllerOriginalImage] as! UIImage // get image
 
-        ImagePickerView.contentMode = .scaleAspectFit // scale type
+        ImagePickerView.contentMode = .center // scale type
         ImagePickerView.image = chosenImage // set image to view
         dismiss(animated:true, completion: nil) // dismiss dialog
     }
