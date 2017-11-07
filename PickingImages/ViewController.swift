@@ -12,6 +12,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
 
     // MARK: Outlets
     @IBOutlet weak var ImagePickerView: UIImageView!
+    @IBOutlet weak var cameraButton: UIBarButtonItem!
     // MARK: Memeber variables
     
     
@@ -19,10 +20,14 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        // disable camera button if it's not available
+        cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
+        
     }
 
 
-    @IBAction func pickerImage(_ sender: Any) {
+    @IBAction func pickAnImageFromAlbum(_ sender: Any) {
         let pickerController = UIImagePickerController()
         pickerController.delegate = self
         pickerController.allowsEditing = false
@@ -41,11 +46,23 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         
         let chosenImage = info[UIImagePickerControllerOriginalImage] as! UIImage // get image
-
+        
         ImagePickerView.contentMode = .center // scale type
         ImagePickerView.image = chosenImage // set image to view
         dismiss(animated:true, completion: nil) // dismiss dialog
     }
+    
+    
+    @IBAction func pickAnImageFromCamera(_ sender: Any) {
+        let imagePicker = UIImagePickerController()
+        imagePicker.delegate = self
+        imagePicker.allowsEditing = false
+        imagePicker.sourceType = .camera
+        imagePicker.cameraCaptureMode = .photo
+        imagePicker.modalPresentationStyle = .fullScreen
+        present(imagePicker, animated: true, completion: nil)
+    }
+    
     
 }
 
